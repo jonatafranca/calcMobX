@@ -1,10 +1,11 @@
 import 'package:calculadora_flutter_dell/calc_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 void main() => runApp(Calculadora());
 
 class Calculadora extends StatelessWidget {
-  final calcController = CalcController();
+  final CalcController calcController = CalcController();
 
   @override
   Widget build(BuildContext context) {
@@ -17,67 +18,70 @@ class Calculadora extends StatelessWidget {
       home: SafeArea(
         child: Scaffold(
           body: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(18),
-              child: Column(
-                children: <Widget>[
-                  Numeros(calcController.onPrimeiroNumeroEscolhido),
-                  Divider(),
-                  Operacoes(calcController.onOperacaoEscolhida),
-                  Divider(),
-                  Numeros(calcController.onSegundoNumeroEscolhido),
-                  Divider(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      BotaoCalcular(calcController.todasOpcoesForamEscolhidas()
-                          ? calcController.onClickBotao
-                          : null),
-                      BotaoZerar(calcController.onClickBotaoZerar)
-                    ],
-                  ),
-                  Divider(),
-                  Row(
-                    children: <Widget>[
-                      Text(
-                        'Operação: ',
-                        style: TextStyle(fontSize: 28),
-                      ),
-                      calcController.primeiroNumero != null
-                          ? Text(
-                              calcController.primeiroNumero.toString(),
-                              style: TextStyle(fontSize: 28),
-                            )
-                          : SizedBox.shrink(),
-                      calcController.operacaoEscolhida != null
-                          ? Text(
-                              calcController.operacaoEscolhida,
-                              style: TextStyle(fontSize: 28),
-                            )
-                          : SizedBox.shrink(),
-                      calcController.segundoNumero != null
-                          ? Text(
-                              calcController.segundoNumero.toString(),
-                              style: TextStyle(fontSize: 28),
-                            )
-                          : SizedBox.shrink(),
-                    ],
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Text(
-                        'Resultado: ',
-                        style: TextStyle(fontSize: 28),
-                      ),
-                      calcController.resultado != null
-                          ? Text(
-                              calcController.resultado.toStringAsFixed(2),
-                              style: TextStyle(fontSize: 28),
-                            )
-                          : SizedBox.shrink(),
-                    ],
-                  ),
-                ],
+            child: Observer(
+              builder: (_) => Padding(
+                padding: const EdgeInsets.all(18),
+                child: Column(
+                  children: <Widget>[
+                    Numeros(calcController.onPrimeiroNumeroEscolhido),
+                    Divider(),
+                    Operacoes(calcController.onOperacaoEscolhida),
+                    Divider(),
+                    Numeros(calcController.onSegundoNumeroEscolhido),
+                    Divider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        BotaoCalcular(
+                            calcController.todasOpcoesForamEscolhidas()
+                                ? calcController.onClickBotao
+                                : null),
+                        BotaoZerar(calcController.onClickBotaoZerar)
+                      ],
+                    ),
+                    Divider(),
+                    Row(
+                      children: <Widget>[
+                        Text(
+                          'Operação: ',
+                          style: TextStyle(fontSize: 28),
+                        ),
+                        calcController.primeiroNumero != null
+                            ? Text(
+                                calcController.primeiroNumero.toString(),
+                                style: TextStyle(fontSize: 28),
+                              )
+                            : SizedBox.shrink(),
+                        calcController.operacaoEscolhida != null
+                            ? Text(
+                                calcController.operacaoEscolhida,
+                                style: TextStyle(fontSize: 28),
+                              )
+                            : SizedBox.shrink(),
+                        calcController.segundoNumero != null
+                            ? Text(
+                                calcController.segundoNumero.toString(),
+                                style: TextStyle(fontSize: 28),
+                              )
+                            : SizedBox.shrink(),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Text(
+                          'Resultado: ',
+                          style: TextStyle(fontSize: 28),
+                        ),
+                        calcController.resultado != null
+                            ? Text(
+                                calcController.resultado.toStringAsFixed(2),
+                                style: TextStyle(fontSize: 28),
+                              )
+                            : SizedBox.shrink(),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -94,7 +98,7 @@ class BotaoZerar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RaisedButton(
+    return MaterialButton(
       color: Colors.blue,
       onPressed: onClickBotao,
       child: Text(
@@ -115,7 +119,7 @@ class BotaoCalcular extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RaisedButton(
+    return MaterialButton(
       color: Colors.blue,
       onPressed: onClickBotao,
       child: Text(

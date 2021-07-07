@@ -5,6 +5,7 @@ part 'calc_controller.g.dart';
 class CalcController = CalcControllerBase with _$CalcController;
 
 abstract class CalcControllerBase with Store {
+  
   @observable
   int primeiroNumero;
   @observable
