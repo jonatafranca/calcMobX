@@ -24,8 +24,76 @@ mixin _$CalcController on CalcControllerBase, Store {
     });
   }
 
+  final _$segundoNumeroAtom = Atom(name: 'CalcControllerBase.segundoNumero');
+
+  @override
+  int get segundoNumero {
+    _$segundoNumeroAtom.reportRead();
+    return super.segundoNumero;
+  }
+
+  @override
+  set segundoNumero(int value) {
+    _$segundoNumeroAtom.reportWrite(value, super.segundoNumero, () {
+      super.segundoNumero = value;
+    });
+  }
+
+  final _$operacaoEscolhidaAtom =
+      Atom(name: 'CalcControllerBase.operacaoEscolhida');
+
+  @override
+  String get operacaoEscolhida {
+    _$operacaoEscolhidaAtom.reportRead();
+    return super.operacaoEscolhida;
+  }
+
+  @override
+  set operacaoEscolhida(String value) {
+    _$operacaoEscolhidaAtom.reportWrite(value, super.operacaoEscolhida, () {
+      super.operacaoEscolhida = value;
+    });
+  }
+
+  final _$resultadoAtom = Atom(name: 'CalcControllerBase.resultado');
+
+  @override
+  double get resultado {
+    _$resultadoAtom.reportRead();
+    return super.resultado;
+  }
+
+  @override
+  set resultado(double value) {
+    _$resultadoAtom.reportWrite(value, super.resultado, () {
+      super.resultado = value;
+    });
+  }
+
   final _$CalcControllerBaseActionController =
       ActionController(name: 'CalcControllerBase');
+
+  @override
+  bool todasOpcoesForamEscolhidas() {
+    final _$actionInfo = _$CalcControllerBaseActionController.startAction(
+        name: 'CalcControllerBase.todasOpcoesForamEscolhidas');
+    try {
+      return super.todasOpcoesForamEscolhidas();
+    } finally {
+      _$CalcControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void onClickBotao() {
+    final _$actionInfo = _$CalcControllerBaseActionController.startAction(
+        name: 'CalcControllerBase.onClickBotao');
+    try {
+      return super.onClickBotao();
+    } finally {
+      _$CalcControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void onClickBotaoZerar() {
@@ -39,9 +107,45 @@ mixin _$CalcController on CalcControllerBase, Store {
   }
 
   @override
+  void onPrimeiroNumeroEscolhido(int numero) {
+    final _$actionInfo = _$CalcControllerBaseActionController.startAction(
+        name: 'CalcControllerBase.onPrimeiroNumeroEscolhido');
+    try {
+      return super.onPrimeiroNumeroEscolhido(numero);
+    } finally {
+      _$CalcControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void onSegundoNumeroEscolhido(int numero) {
+    final _$actionInfo = _$CalcControllerBaseActionController.startAction(
+        name: 'CalcControllerBase.onSegundoNumeroEscolhido');
+    try {
+      return super.onSegundoNumeroEscolhido(numero);
+    } finally {
+      _$CalcControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void onOperacaoEscolhida(String operacao) {
+    final _$actionInfo = _$CalcControllerBaseActionController.startAction(
+        name: 'CalcControllerBase.onOperacaoEscolhida');
+    try {
+      return super.onOperacaoEscolhida(operacao);
+    } finally {
+      _$CalcControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
-primeiroNumero: ${primeiroNumero}
+primeiroNumero: ${primeiroNumero},
+segundoNumero: ${segundoNumero},
+operacaoEscolhida: ${operacaoEscolhida},
+resultado: ${resultado}
     ''';
   }
 }
