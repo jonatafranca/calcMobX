@@ -19,7 +19,7 @@ class Calculadora extends StatelessWidget {
         child: Scaffold(
           body: SingleChildScrollView(
             child: Observer(
-              builder: (_) => Padding(
+              builder: (context) => Padding(
                 padding: const EdgeInsets.all(18),
                 child: Column(
                   children: <Widget>[
@@ -98,7 +98,7 @@ class BotaoZerar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(
+    return RaisedButton(
       color: Colors.blue,
       onPressed: onClickBotao,
       child: Text(
@@ -119,7 +119,7 @@ class BotaoCalcular extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(
+    return RaisedButton(
       color: Colors.blue,
       onPressed: onClickBotao,
       child: Text(

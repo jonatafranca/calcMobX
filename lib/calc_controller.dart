@@ -5,7 +5,6 @@ part 'calc_controller.g.dart';
 class CalcController = CalcControllerBase with _$CalcController;
 
 abstract class CalcControllerBase with Store {
-  
   @observable
   int primeiroNumero;
   @observable
@@ -14,6 +13,13 @@ abstract class CalcControllerBase with Store {
   String operacaoEscolhida;
   @observable
   double resultado;
+
+  @action
+  bool todasOpcoesForamEscolhidas() {
+    return primeiroNumero != null &&
+        segundoNumero != null &&
+        operacaoEscolhida != null;
+  }
 
   @action
   void onClickBotao() {
@@ -51,12 +57,5 @@ abstract class CalcControllerBase with Store {
   @action
   void onOperacaoEscolhida(String operacao) {
     operacaoEscolhida = operacao;
-  }
-
-  @action
-  bool todasOpcoesForamEscolhidas() {
-    return primeiroNumero != null &&
-        segundoNumero != null &&
-        operacaoEscolhida != null;
   }
 }
