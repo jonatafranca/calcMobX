@@ -98,7 +98,7 @@ class BotaoZerar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RaisedButton(
+    return MaterialButton(
       color: Colors.blue,
       onPressed: onClickBotao,
       child: Text(
@@ -119,7 +119,7 @@ class BotaoCalcular extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RaisedButton(
+    return MaterialButton(
       color: Colors.blue,
       onPressed: onClickBotao,
       child: Text(
